@@ -13,14 +13,16 @@ python = "^3.12"
 requests = "^2.31.0"
 beautifulsoup4 = "^4.12.3"
 newspaper3k = "^0.2.8"
+lxml = { version = "^5.1.0", extras = ["html_clean"] }
 
 # GenAI
 openai = "^1.14.3"
 langchain = "^0.1.12"
 
 # Embeddings / vector DB
-faiss-cpu = "^1.7.4"
+#faiss-cpu = "^1.7.4"
 tqdm = "^4.66.2"
+chromadb = "^0.4.22"
 
 # Environment config
 python-dotenv = "^1.0.1"
