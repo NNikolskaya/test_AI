@@ -85,7 +85,34 @@ Sample output:
 > \
 >🔹 Score: 0.362
 
-
+## Running the Project
+You can run this project either with Makefile (Linux/macOS) or using a Windows batch script.
+### Option 1: Using Makefile (macOS/Linux)
+Make sure you have Poetry(https://python-poetry.org/) installed.
+```bash
+# Run full ETL: scrape → summarize → store
+make run
+# Search via CLI
+make search
+# Launch Streamlit UI
+make streamlit
+# Stop Streamlit if needed
+make stop-streamlit
+```
+### Option 2: Using Windows batch script
+Make sure you have Poetry(https://python-poetry.org/) installed.
+```bash
+scripts\run_all.bat
+```
+It opens an interactive menu where you can:
+\
+Run full pipeline (scrape + summarize + store)
+\
+Search via CLI
+\
+Launch Streamlit UI
+\
+Stop Streamlit UI
 
 ## How It Works
 Scraping — Full text via newspaper3k

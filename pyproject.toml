@@ -17,6 +17,7 @@ python-dotenv = "^1.0.1"
 langchain-openai = "^0.3.12"
 langchain-community = "^0.3.21"
 langchain-chroma = "^0.2.2"
+streamlit = "^1.44.1"
 
 [build-system]
 requires = ["poetry-core>=2.0.0,<3.0.0"]
