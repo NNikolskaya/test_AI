@@ -19,4 +19,4 @@ if __name__ == "__main__":
     with open("data/processed_articles.json", "w", encoding="utf-8") as f:
         json.dump(enriched_articles, f, ensure_ascii=False, indent=2)
 
-    print("✅ Articles scraped, summarized, and saved to data/processed_articles.json")
+    print("Articles scraped, summarized, and saved to data/processed_articles.json")

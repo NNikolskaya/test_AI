@@ -1,16 +1,16 @@
 from news_ai.search import semantic_search
 
 if __name__ == "__main__":
-    print("🔍 Semantic search over your news collection")
+    print("Semantic search over your news collection")
     query = input("Enter your query: ")
 
     results = semantic_search(query)
 
     if not results:
-        print("\n❌ No relevant articles found.")
+        print("\nNo relevant articles found.")
     else:
         for i, article in enumerate(results, 1):
-            print(f"\n🔸 Result {i} (distance: {article['distance']:.3f})")
+            print(f"* Result {i} (distance: {article['distance']:.3f})")
             print(f"Title  : {article['title']}")
             print(f"URL    : {article['url']}")
             print(f"Topics : {article['topics']}")
