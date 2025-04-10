@@ -2,12 +2,11 @@ import json
 from news_ai.scraper import scrape_articles
 from news_ai.summarizer import summarize_article
 
-TEST_URLS = [
-    "https://www.bbc.com/news/articles/c7vnnd89e0jo",
-    "https://edition.cnn.com/2025/04/09/entertainment/noah-wyle-jennifer-hudson-show/index.html",
-]
-
 if __name__ == "__main__":
+    TEST_URLS = []
+    with open("data/article_urls.txt", "r", encoding="utf-8") as f:
+        TEST_URLS.extend(line.strip() for line in f if line.strip())
+
     raw_articles = scrape_articles(TEST_URLS)
     enriched_articles = []
 
