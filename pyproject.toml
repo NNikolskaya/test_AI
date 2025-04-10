@@ -9,32 +9,14 @@ readme = "README.md"
 [tool.poetry.dependencies]
 python = "^3.12"
 
-# Web scraping
-requests = "^2.31.0"
-beautifulsoup4 = "^4.12.3"
 newspaper3k = "^0.2.8"
 lxml = { version = "^5.1.0", extras = ["html_clean"] }
-
-# GenAI
 openai = "^1.14.3"
-langchain = "^0.1.12"
-
-# Embeddings / vector DB
-#faiss-cpu = "^1.7.4"
-tqdm = "^4.66.2"
-chromadb = "^0.4.22"
-
-# Environment config
+langchain = "0.3.23"
 python-dotenv = "^1.0.1"
-
-# Helper libs
-pydantic = "^2.6.4"
-rich = "^13.7.1"
-
-[tool.poetry.group.dev.dependencies]
-black = "^24.3.0"
-isort = "^5.13.2"
-mypy = "^1.9.0"
+langchain-openai = "^0.3.12"
+langchain-community = "^0.3.21"
+langchain-chroma = "^0.2.2"
 
 [build-system]
 requires = ["poetry-core>=2.0.0,<3.0.0"]

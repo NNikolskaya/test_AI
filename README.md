@@ -59,9 +59,9 @@ This will:
 poetry run python scripts/load_to_vector_store.py
 ```
 
-## Semantic Search CLI
+## Semantic Search CLI using ChromaDB
 ```bash
-poetry run python scripts/search_cli.py
+poetry run python scripts/lang_search.py
 ```
 
 You can enter free-text queries like:
@@ -70,12 +70,15 @@ You can enter free-text queries like:
 
 Sample output:
 
->🔸 Result 1 (distance: 0.354)
-Title  : Is the US making $2bn from tariffs
-URL    : https://example.com/article123
-Topics : Tariffs, Trade deficits, Canada dairy tariffs, US-EU car imports
-Summary:
-President Trump has claimed that the US is collecting billions of dollars...
+>🔎 Results:
+>
+> — Is the US making $2bn from tariffs
+> \
+>URL: https://www.bbc.com/news/articles/c7vnnd89e0jo
+> \
+>🔹 Score: 0.362
+
+
 
 ## How It Works
 Scraping — Full text via newspaper3k
@@ -109,4 +112,18 @@ scripts/
 
 
 ## Notes
-**Note: Although LlamaIndex was listed among the recommended libraries, in practice it was found that the similarity score it returns during vector search does not correlate well with actual relevance. For better stability and accuracy, direct search via ChromaDB was implemented instead.**
+This project initially explored multiple options for semantic search using vector databases and LLM-based tools. Here's a quick overview of the evaluated tools and why Langchain + ChromaDB was selected as the final stack:
+
+✅ Final Choice: langchain-chroma
+
+Uses OpenAI's text-embedding-ada-002 model for vectorization.
+Stores vectors with metadata in ChromaDB (local or persistent).
+Integrated via langchain-chroma, the officially recommended and maintained connector.
+Provides stable results with clear scoring logic, enabling reliable filtering by relevance.
+
+⚠️ Tried and Dropped: LlamaIndex
+
+Was originally listed as a suggested tool.
+In practice, returned lower similarity scores for more relevant documents and higher scores for unrelated ones.
+The internal scoring mechanism didn't correlate with actual semantic proximity in multiple tests.
+While the integration was smooth, search reliability was insufficient.
