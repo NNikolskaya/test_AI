@@ -1,12 +1,7 @@
-import os
 import json
 from typing import Dict
-from openai import OpenAI
-from dotenv import load_dotenv
 
-load_dotenv()
-
-client = OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
+from news_ai.config import Config
 
 SUMMARIZE_PROMPT_TEMPLATE = """
 You are a professional news assistant. Please do the following:
@@ -32,8 +27,8 @@ Respond ONLY in raw JSON format, without explanations or additional text.
 def summarize_article(article_text: str) -> Dict[str, str]:
     prompt = SUMMARIZE_PROMPT_TEMPLATE.format(article_text=article_text[:4000])  # щоб не вийти за токени
 
-    response = client.chat.completions.create(
-        model="gpt-3.5-turbo",
+    response = Config.openai_client.chat.completions.create(
+        model=Config.MODEL_NAME,
         messages=[
             {"role": "user", "content": prompt}
         ],

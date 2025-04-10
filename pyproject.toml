@@ -17,7 +17,7 @@ lxml = { version = "^5.1.0", extras = ["html_clean"] }
 
 # GenAI
 openai = "^1.14.3"
-langchain = "^0.1.12"
+langchain = "0.3.23"
 
 # Embeddings / vector DB
 #faiss-cpu = "^1.7.4"
@@ -30,6 +30,9 @@ python-dotenv = "^1.0.1"
 # Helper libs
 pydantic = "^2.6.4"
 rich = "^13.7.1"
+langchain-openai = "^0.3.12"
+langchain-community = "^0.3.21"
+langchain-chroma = "^0.2.2"
 
 [tool.poetry.group.dev.dependencies]
 black = "^24.3.0"
