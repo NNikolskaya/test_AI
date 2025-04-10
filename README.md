@@ -45,16 +45,23 @@ OPENAI_API_KEY=sk-...
 ### 4. Add article URLs to data/article_urls.txt
    Each line should be a news article URL.
    
-### 5. Run ingestion pipeline
+### 5. Run dataloading
 ```bash
-poetry run python scripts/ingest.py
+poetry run python scripts/process_and_index.py
 ```
 This will:
 1. Scrape articles
 2. Generate summaries & topics
-3. Save processed data to data/processed_articles.json
+3. Load data into vector DB
+4. Save processed data to data/processed_articles.json
 
-### 6. Load articles into vector DB
+### OR if you prefer to have more control over the process, you can run each step separately:
+#### 5. Run ingestion pipeline
+```bash
+poetry run python scripts/ingest.py
+```
+
+#### 6. Load articles into vector DB
 ```bash
 poetry run python scripts/load_to_vector_store.py
 ```
@@ -98,9 +105,9 @@ news_ai/
 \
 ├── summarizer.py         # GPT-based summarization
 \
-├── vector_store.py       # Chroma vector DB logic
+├── lang_vector_store.py       # Chroma vector DB logic
 \
-├── search.py             # Semantic search logic
+├── lang_search.py             # Semantic search logic
 
 scripts/
 \
@@ -108,8 +115,9 @@ scripts/
 \
 ├── load_to_vector_store.py 
 \
-├── search_cli.py         # Command line search interface
-
+├── lang_search.py         # Command line search interface
+\
+├── process_and_index.py         # Single interface for data loading
 
 ## Notes
 This project initially explored multiple options for semantic search using vector databases and LLM-based tools. Here's a quick overview of the evaluated tools and why Langchain + ChromaDB was selected as the final stack:

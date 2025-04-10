@@ -48,3 +48,12 @@ def summarize_article(article_text: str) -> Dict[str, str]:
             "topics": [],
             "error": str(e),
         }
+
+def enrich_with_genai(articles: list) -> list:
+    enriched_articles = []
+    for article in articles:
+        if article.get("text"):
+            summary_data = summarize_article(article["text"])
+            article.update(summary_data)
+        enriched_articles.append(article)
+    return enriched_articles
